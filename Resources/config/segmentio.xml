@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="helthe_segmentio.client.class">Helthe\Component\Segmentio\Client</parameter>
+        <parameter key="helthe_segmentio.queue.class">Helthe\Component\Segmentio\Queue</parameter>
+    </parameters>
+
+    <services>
+        <service id="helthe_segmentio.client" class="%helthe_segmentio.client.class%">
+            <argument type="service" id="helthe_segmentio.queue" />
+            <argument /> <!-- Write key -->
+        </service>
+
+        <service id="helthe_segmentio.queue" class="%helthe_segmentio.queue.class%" />
+    </services>
+</container>

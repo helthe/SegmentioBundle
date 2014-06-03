@@ -1,0 +1,28 @@
+{
+    "name":        "helthe/segmentio-bundle",
+    "type":        "symfony-bundle",
+    "description": "Helthe Segment.io bundle for Symfony 2",
+    "keywords":    ["analytics", "analytics.js", "segmentio"],
+    "homepage":    "https://helthe.co",
+    "license":     "MIT",
+    "authors": [
+        {
+            "name": "Carl Alexander",
+            "email": "carlalexander@helthe.co"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "helthe/segmentio": "dev-master",
+        "symfony/framework-bundle": "~2.3",
+        "twig/twig": "~1.11"
+    },
+    "autoload": {
+        "psr-4": { "Helthe\\Bundle\\SegmentioBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
