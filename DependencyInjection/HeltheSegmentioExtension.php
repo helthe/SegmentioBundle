@@ -32,10 +32,12 @@ class HeltheSegmentioExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('http.xml');
         $loader->load('segmentio.xml');
         $loader->load('templating.xml');
         $loader->load('twig.xml');
 
         $container->getDefinition('helthe_segmentio.client')->replaceArgument(1, $config['write_key']);
+        $container->getDefinition('helthe_segmentio.http_client')->replaceArgument(2, $config['write_key']);
     }
 }

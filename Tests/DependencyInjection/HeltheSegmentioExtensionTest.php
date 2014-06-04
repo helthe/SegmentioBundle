@@ -32,11 +32,21 @@ class HeltheSegmentioExtensionTest extends \PHPUnit_Framework_TestCase
         $loader = new HeltheSegmentioExtension();
         $loader->load(array(array('write_key' => 'segmentio_key')), $container);
 
+        // HTTP Client
+        $this->assertTrue($container->hasParameter('helthe_segmentio.http.client.class'));
+        $this->assertEquals('GuzzleHttp\Client', $container->getParameter('helthe_segmentio.http.client.class'));
+        $this->assertTrue($container->hasDefinition('helthe_segmentio.http.client'));
+
         // Segment.io
         $this->assertTrue($container->hasParameter('helthe_segmentio.client.class'));
         $this->assertEquals('Helthe\Component\Segmentio\Client', $container->getParameter('helthe_segmentio.client.class'));
         $this->assertTrue($container->hasDefinition('helthe_segmentio.client'));
         $this->assertEquals('segmentio_key', $container->getDefinition('helthe_segmentio.client')->getArgument(1));
+
+        $this->assertTrue($container->hasParameter('helthe_segmentio.http_client.class'));
+        $this->assertEquals('Helthe\Component\Segmentio\HttpClient', $container->getParameter('helthe_segmentio.http_client.class'));
+        $this->assertTrue($container->hasDefinition('helthe_segmentio.http_client'));
+        $this->assertEquals('segmentio_key', $container->getDefinition('helthe_segmentio.http_client')->getArgument(2));
 
         $this->assertTrue($container->hasParameter('helthe_segmentio.queue.class'));
         $this->assertEquals('Helthe\Component\Segmentio\Queue', $container->getParameter('helthe_segmentio.queue.class'));
